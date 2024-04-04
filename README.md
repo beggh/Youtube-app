@@ -18,4 +18,20 @@ Features
 
 Running Steps
 
-- 
+- Clone the project
+  ```bash
+  git:clone https://github.com/beggh/Youtube-app.git
+- Install dependencies
+  ```bash
+  npm install
+
+- Run in development mode
+  ```bash
+  npm run start
+
+Running with Docker Compose
+
+- Run
+  ```bash
+  docker-compose up -d
+Server is running at http://localhost:3001
