@@ -33,7 +33,7 @@ mongoose.connect(dbConfig.uri, dbConfig.options)
   .then(() => {
     console.log('Connected to MongoDB');
 
-    app.get('/search', videoController.get('/search'));
+    app.get('/videos/search', videoController.get('/videos/search'));
   })
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);

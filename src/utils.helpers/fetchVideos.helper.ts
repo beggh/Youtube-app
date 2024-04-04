@@ -21,7 +21,8 @@ export default class VideoScheduler {
             console.log('Fething videos from cron ....')
             const apiKey = ['AIzaSyCJDpVAMqVf-SCv3UFStGQ3-_oXN8IPEC0', 'AIzaSyDHtzeA0lii7LTJiGz5CBxq8ZCSzmtvtEw', 'AIzaSyCoFin0q093V4sLgvVxlUySBteEf7sU3rc', 'AIzaSyC6hGbtDD-cQ16jk1aSMlQmnYCcUOlumaY', 'AIzaSyDWQi84jvoXMGurwO7zIX2VRjPyKFonZnA'];
             let _size = apiKey.length;
-            const youtube = google.youtube({ version: 'v3', auth: apiKey[this.index % _size]});
+            this.index %= _size; // to prevent Memory overflow
+            const youtube = google.youtube({ version: 'v3', auth: apiKey[this.index]});
             console.log(` index :=  ${this.index}`);
     
             const queryParams: youtube_v3.Params$Resource$Search$List = {
@@ -29,6 +30,7 @@ export default class VideoScheduler {
                 q: this.fetchQuery,
                 maxResults: 100,
                 type: ['videoModel'],
+                order: 'date',
             }
             const response: any = await youtube.search.list(queryParams);
     

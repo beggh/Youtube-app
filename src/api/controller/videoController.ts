@@ -5,7 +5,7 @@ import YoutubeService from '../services/youtube-service';
 const service = new YoutubeService();
 const router = express.Router();
 
-router.get('/search', async (req: Request, res: Response) => {
+router.get('/videos/search', async (req: Request, res: Response) => {
   try {
     const itemsObj = await service.search(req.query);
     res.status(200).json({data: itemsObj.data, nextPageToken: itemsObj.nextPageToken });
