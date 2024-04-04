@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  web:
+    restart: always
+    build: .  # Build the image from the current directory (Dockerfile)
+    ports:
+      - "3001:3001"  # Map host port 3001 to container port 3001
